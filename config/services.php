@@ -31,8 +31,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '295635411054-o6g4u4denfu25l7bga2lcuag92h9sv41.apps.googleusercontent.com',
-        'client_secret' => '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',
+        'client_id' =>  env('GOOGLE_APP_ID'),
+        'client_secret' => env('GOOGLE_APP_SECRET'),
         'redirect' => 'https://softwireapp.com/test/auth/google/callback',
     ],
 
