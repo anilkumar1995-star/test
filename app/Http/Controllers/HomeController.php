@@ -30,7 +30,7 @@ class HomeController extends Controller
                         ->orderBy('id', 'DESC')
                         ->get();
           
-        return view('users', compact('users'));
+        return view('home', compact('users'));
     }
 
         /**
@@ -44,13 +44,12 @@ class HomeController extends Controller
         $users = User::select("*");
         
         $users->where('min_income', '>', $user->min_income);
-                       // ->where('max_income', '<', $user->max_income)
         if ($user->gender == 'male') {
             $users->where('gender', '=', 'female'); 
         }
         $users->orderBy('min_income', 'DESC');
         $users = $users->get();
           
-        return view('users', compact('users'));
+        return view('home', compact('users'));
     }
 }
