@@ -10,7 +10,7 @@
                 @if(Auth::user()->role == 'admin')
                 <div class="col-md-2">
                 <a href="{{ url('dummy-users') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">
-                                  <strong>Insert Users</strong>
+                                  <strong>Add Users</strong>
                                 </a> 
                 </div>
                 @endif
