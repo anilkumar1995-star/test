@@ -84,6 +84,7 @@ class RegisterController extends Controller
             'family_type' => $data['family_type'],
             'manglik' => $data['manglik'],
             'email' => $data['email'],
+            'role' => 'admin',
             'password' => Hash::make($data['password']),
         ]);
     }
