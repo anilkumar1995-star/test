@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,15 @@ Route::get('/', function () {
 });
   
 Auth::routes();
-  
+Route::group(['middleware' => ['IsAdmin']], function(){
+    Route::get('/dummy-users', function () {
+        Artisan::call("db:seed");
+        return Redirect::back()->with('flash_message', 'User added successfully.');
+    });
+      
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+});
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/partners', [UserController::class, 'partner'])->name('partners');
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

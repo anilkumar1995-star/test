@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->date('dob')->nullable();
             $table->enum('gender', ['male', 'female'])->default('male');
             $table->enum('role', ['user', 'admin'])->default('user');
-            
-            $table->string('annual_income')->nullable();
+            $table->double('min_income', '18', '2')->default(0);
+            $table->double('max_income' ,'18', '2')->default(0);
             $table->enum('occupation', ['Private job', 'Government job', 'Business'])->default('Private job');
             $table->enum('family_type', ['Joint family', 'Nuclear family'])->default('Nuclear family');
             $table->enum('manglik', ['Yes', 'No'])->default('No');

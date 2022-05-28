@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -14,10 +15,22 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $gender = $this->faker->randomElement(['male', 'female']);
+        $occupation = $this->faker->randomElement(['Private job', 'Government job', 'Business']);
+        $family_type = $this->faker->randomElement(['Joint family', 'Nuclear family']);
+        $manglik = $this->faker->randomElement(['Yes', 'No']);
         return [
-            'name' => $this->faker->name(),
+            'first_name' => $this->faker->name(),
+            'last_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'dob' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'gender' => $gender,
+            'min_income' => rand(0, 99998),
+            'max_income' => rand(99999, 9999999),
+            'occupation' => $occupation,
+            'family_type' => $family_type,
+            'manglik' => $manglik,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];

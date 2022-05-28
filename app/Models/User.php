@@ -23,7 +23,8 @@ class User extends Authenticatable
         'dob',
         'google_id',
         'gender',
-        'annual_income',
+        'min_income',
+        'max_income',
         'occupation',
         'family_type',
         'manglik',
@@ -64,4 +65,5 @@ class User extends Authenticatable
             return false; 
         }
     }
+
 }

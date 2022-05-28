@@ -70,12 +70,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $array = explode("-", $data['annual_income']);
+        $min_income = ltrim($array[0], '₹');
+        $max_income = ltrim($array[1], ' ₹');
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'dob' => $data['dob'],
             'gender' => $data['gender'],
-            'annual_income' => $data['annual_income'],
+            'min_income' => $min_income,
+            'max_income' => $max_income,
             'occupation' => $data['occupation'],
             'family_type' => $data['family_type'],
             'manglik' => $data['manglik'],
