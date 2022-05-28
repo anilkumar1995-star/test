@@ -48,6 +48,7 @@ class HomeController extends Controller
             $users->where('gender', '=', 'female'); 
         }
         $users->orderBy('min_income', 'DESC');
+        $users->where('role', '=', 'user'); 
         $users = $users->get();
           
         return view('home', compact('users'));
