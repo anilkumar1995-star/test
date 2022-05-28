@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -17,12 +19,38 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $users = User::select("*")
+                        
+                        ->orderBy('id', 'DESC')
+                        ->get();
+          
+        return view('users', compact('users'));
+    }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function partner(Request $request)
+    {
+        $user = Auth::user();
+        $users = User::select("*");
+        
+        $users->where('min_income', '>', $user->min_income);
+                       // ->where('max_income', '<', $user->max_income)
+        if ($user->gender == 'male') {
+            $users->where('gender', '=', 'female'); 
+        }
+        $users->orderBy('min_income', 'DESC');
+        $users = $users->get();
+          
+        return view('users', compact('users'));
     }
 }

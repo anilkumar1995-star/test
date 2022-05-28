@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +29,6 @@ Route::group(['middleware' => ['IsAdmin']], function(){
     Route::get('/users', [UserController::class, 'index'])->name('users');
 });
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/partners', [UserController::class, 'partner'])->name('partners');
+Route::get('/partners', [HomeController::class, 'partner'])->name('partners');
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
