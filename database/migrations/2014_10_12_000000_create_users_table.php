@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->date('dob')->nullable();
             $table->enum('gender', ['male', 'female'])->default('male');
+            $table->enum('role', ['user', 'admin'])->default('user');
+            
             $table->string('annual_income')->nullable();
             $table->enum('occupation', ['Private job', 'Government job', 'Business'])->default('Private job');
             $table->enum('family_type', ['Joint family', 'Nuclear family'])->default('Nuclear family');
@@ -28,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
