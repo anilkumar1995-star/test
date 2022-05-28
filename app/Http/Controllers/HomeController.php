@@ -25,10 +25,19 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::select("*")
-                        
-                        ->orderBy('id', 'DESC')
-                        ->get();
+        $user = Auth::user();
+        $users = User::select("*");
+        if ($user->role == 'user') {
+            $users->where('min_income', '>', $user->min_income);
+            if ($user->gender == 'male') {
+                $users->where('gender', '=', 'female'); 
+            }
+            $users->orderBy('min_income', 'DESC');
+            $users->where('role', '=', 'user'); 
+            $users->where('status', '=', 'active'); 
+        }
+      
+        $users = $users->get();
           
         return view('home', compact('users'));
     }
@@ -40,17 +49,6 @@ class HomeController extends Controller
      */
     public function partner(Request $request)
     {
-        $user = Auth::user();
-        $users = User::select("*");
         
-        $users->where('min_income', '>', $user->min_income);
-        if ($user->gender == 'male') {
-            $users->where('gender', '=', 'female'); 
-        }
-        $users->orderBy('min_income', 'DESC');
-        $users->where('role', '=', 'user'); 
-        $users = $users->get();
-          
-        return view('home', compact('users'));
     }
 }
