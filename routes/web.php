@@ -26,7 +26,7 @@ Route::group(['middleware' => ['IsAdmin']], function(){
         return Redirect::back()->with('flash_message', 'User added successfully.');
     });
       
-    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/users', [HomeController::class, 'index'])->name('users');
 });
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/partners', [HomeController::class, 'partner'])->name('partners');
