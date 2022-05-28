@@ -6,13 +6,16 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('User List') }}</div>
+                
                 @if(Auth::user()->role == 'admin')
+                <div class="card-header">{{ __('User List') }}</div>
                 <div class="col-md-2">
                 <a href="{{ url('dummy-users') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">
                                   <strong>Add Users</strong>
                                 </a> 
                 </div>
+                @else
+                <div class="card-header">{{ __('Partenr List') }}</div>
                 @endif
                 <div class="card-body">
                 @if(Session::has('flash_message'))
