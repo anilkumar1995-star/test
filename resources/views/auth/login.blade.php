@@ -64,7 +64,8 @@
                                 @endif
                                   <br/>
                                 <a href="{{ url('auth/google') }}" style="margin-top: 30px;" class="btn btn-lg btn-primary btn-block">
-                                  <strong>Login With Google</strong>
+                                <i class="fa fa-google fa-fw"></i> Login with Google
+
                                 </a> 
                             </div>
                         </div>
