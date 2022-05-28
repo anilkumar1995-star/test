@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Laravel 6 - Login with Google Account Example - ItSolutionStuuf.com</div>
+                <div class="card-header">Test Project</div>
   
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
