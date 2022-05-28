@@ -62,8 +62,8 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                                  
-                                <a href="{{ url('auth/google') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">
+                                  <br/>
+                                <a href="{{ url('auth/google') }}" style="margin-top: 30px;" class="btn btn-lg btn-primary btn-block">
                                   <strong>Login With Google</strong>
                                 </a> 
                             </div>
