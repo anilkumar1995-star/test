@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '295635411054-o6g4u4denfu25l7bga2lcuag92h9sv41.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
+        'redirect' => 'https://softwireapp.com/test/auth/google/callback',
     ],
 
 ];
